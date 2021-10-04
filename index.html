@@ -56,7 +56,7 @@
 					data => {
 						console.log(data);
 						coordinates.push([data.coords.latitude, data.coords.longitude, data.coords.timestamp]);
-						document.getElementById('coordinates').innerHtml += data + <br>;
+						document.getElementById('coordinates').innerHtml += data;
 						// window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
 					},
 					error => console.log(error), {
