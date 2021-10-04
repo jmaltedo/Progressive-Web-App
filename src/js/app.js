@@ -10,12 +10,15 @@ const stop = document.querySelector("#stop");
 
 const coordinates = [];
 
+var displayCoordinates = "";
+
 start.addEventListener("click", () => {
   navigator.geolocation.watchPosition(
     data => {
       console.log(data);
       coordinates.push([data.coords.latitude, data.coords.longitude, data.timestamp]);
-      document.getElementById('coordinates').innerHtml = data;
+      displayCoordinates += data.coords.latitude + ", " + data.coords.longitude + ", " + data.timestamp + "<b>";
+      document.getElementById('coordinates').innerHtml = displayCoordinates;
       // window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
     },
     error => console.log(error), {
