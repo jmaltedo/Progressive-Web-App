@@ -42,8 +42,34 @@
 	<body>
 		<h1>Herzlich willkommen in der Progressive Web App</h1>
 
+		<button id="start">Start</button>
+		<button id="stop">Stop</button>
 
 		<script>
+			const start = document.querySelector("#start");
+			const stop = document.querySelector("#stop");
+
+			const coordinates = [];
+
+			start.addEventListener("click", () => {
+				navigator.geolocation.watchPosition(
+					data => {
+						console.log(data);
+						coordinates.push([data.coords.latitude, data.coords.longitude, data.coords.timestamp]);
+						document.getElementById('coordinates').innerHtml += data + <br>;
+						// window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
+					},
+					error => console.log(error), {
+						enableHighAccuracy: true;
+					}
+				);
+			});
+		</script>
+
+		<div id="coordinates"></div>
+
+
+		<!-- <script>
 			if ('geolocation' in navigator) {
 				console.log('geolocation available');
 				navigator.geolocation.getCurrentPosition(function(position) {
@@ -57,10 +83,10 @@
 			else {
 				console.log('geolocation not available');
 			}
-		</script>
+		</script> -->
 
-		<p>latitude: <span id="latitude"></span></p>
-		<p>longitude: <span id="longitude"></span></p>
+		<!-- <p>latitude: <span id="latitude"></span></p>
+		<p>longitude: <span id="longitude"></span></p> -->
 
     <script src="src/js/app.js"></script>
 	</body>
