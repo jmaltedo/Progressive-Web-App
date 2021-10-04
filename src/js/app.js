@@ -18,7 +18,7 @@ start.addEventListener("click", () => {
       console.log(data);
       coordinates.push([data.coords.latitude, data.coords.longitude, data.timestamp]);
       displayCoordinates = data.coords.latitude + ", " + data.coords.longitude + ", " + data.timestamp + "<b>";
-      document.getElementById('coordinates').innerHtml = displayCoordinates;
+      document.getElementById('coordinates').textContent = displayCoordinates;
       // window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
     },
     error => console.log(error), {
