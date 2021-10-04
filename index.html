@@ -45,29 +45,9 @@
 		<button id="start">Start</button>
 		<button id="stop">Stop</button>
 
-		<script>
-			const start = document.querySelector("#start");
-			const stop = document.querySelector("#stop");
 
-			const coordinates = [];
-
-			start.addEventListener("click", () => {
-				navigator.geolocation.watchPosition(
-					data => {
-						console.log(data);
-						coordinates.push([data.coords.latitude, data.coords.longitude, data.timestamp]);
-						document.getElementById('coordinates').innerHtml = data;
-						// window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
-					},
-					error => console.log(error), {
-						enableHighAccuracy: true
-					}
-				);
-			});
-		</script>
 
 		<div id="coordinates"></div>
-
 
 		<!-- <script>
 			if ('geolocation' in navigator) {
