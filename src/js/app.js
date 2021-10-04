@@ -17,7 +17,7 @@ start.addEventListener("click", () => {
     data => {
       console.log(data);
       coordinates.push([data.coords.latitude, data.coords.longitude, data.timestamp]);
-      displayCoordinates += data.coords.latitude + ", " + data.coords.longitude + ", " + data.timestamp + "<b>";
+      displayCoordinates = data.coords.latitude + ", " + data.coords.longitude + ", " + data.timestamp + "<b>";
       document.getElementById('coordinates').innerHtml = displayCoordinates;
       // window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
     },
