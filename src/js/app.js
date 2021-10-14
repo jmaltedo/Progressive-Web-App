@@ -39,7 +39,6 @@ function start() {
 
 function stop() {
   navigator.geolocation.clearWatch(watchId);
-  console.log("success1");
   var parsed = "";
   for (i=0; i < route.length; i++) {
     var object = route[i];
@@ -49,4 +48,13 @@ function stop() {
     parsed += "<br />";
   }
   document.getElementById('display').innerHTML = parsed;
+  if (document.getElementById('display').innerHTML !== "") {
+    document.getElementById('deletebutton').style.display = "block";
+  }
+}
+
+function deleteroute() {
+  route = [];
+  document.getElementById('display').innerHTML = "";
+  document.getElementById('deletebutton').style.display = "none";
 }
