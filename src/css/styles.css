@@ -1,29 +1,197 @@
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-#map {
+html {
+  font-size: 16px;
   height: 100%;
 }
-
-/* Optional: Makes the sample page fill the window. */
-html,
 body {
+  margin: 0;
   height: 100%;
+  font-family: "Montserrat", "Helvetica Neue", "Arial", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn-typ-1 {
+  background-color: #A62C21;
+  border: 2px solid #A62C21;
+  color: #FFF;
+  padding: .4rem 2rem;
+  margin: 1rem .5rem;
+}
+
+.btn-typ-1:hover {
+  background-color: #A62C21;
+  border: 2px solid #FFF;
+  color: #FFF;
+  padding: .4rem 2rem;
+  margin: 1rem .5rem;
+}
+
+#header-nav {
+  width: 100%;
+  height: 50px;
+  background-color: #3D3F45;
+  position: relative;
+  font-weight: normal;
+  font-size: 1.1rem;
+}
+
+#desktop-nav {
   margin: 0;
   padding: 0;
+  float: right;
+  height: 100%;
 }
 
-.custom-map-control-button {
-  background-color: #fff;
-  border: 0;
-  border-radius: 2px;
-  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-  margin: 10px;
-  padding: 0 0.5em;
-  font: 400 18px Roboto, Arial, sans-serif;
-  overflow: hidden;
-  height: 40px;
-  cursor: pointer;
+#desktop-nav {
+  margin-right: 1rem;
 }
-.custom-map-control-button:hover {
-  background: #ebebeb;
+
+#desktop-nav li {
+  display: inline-block;
+  height: 100%;
+  padding: 0 .4rem 0 .4rem;
+}
+
+#desktop-nav li > a {
+  display: inline-block;
+  margin-top: .8rem;
+}
+
+#desktop-nav li > a:link {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#desktop-nav li > a:visited {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#desktop-nav li > a:active {
+  color: #F4F4F4;
+  text-decoration: none;
+}
+
+#desktop-nav li > a:hover {
+  color: #F4F4F4;
+  text-decoration: none;
+}
+
+#mobile-nav-button {
+  position: relative;
+  top: 8px;
+  right: 20px;
+  float: right;
+}
+
+#mobile-nav-button div {
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #fff;
+}
+
+#mobile-nav-close-button {
+  position: absolute;
+  left: 47%;
+  top: 5%;
+}
+
+#mobile-nav-close-button div{
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #fff;
+  position: absolute;
+}
+
+#mobile-nav-close-button div:nth-of-type(odd) {
+  transform: rotate(45deg);
+}
+
+#mobile-nav-close-button div:nth-of-type(even) {
+  transform: rotate(-45deg);
+}
+
+#mobile-nav {
+  position: fixed;
+  z-index: 99;
+  right: -320px;
+  width: 320px;
+  overflow: hidden;
+  height: 100%;
+  background-color: #3D3F45;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+#mobile-nav ul {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+#mobile-nav li {
+  padding: 1rem 0;
+}
+
+#mobile-nav li > a:link,
+#mobile-nav li > a:visited{
+  text-decoration: none;
+  color: #fff;
+}
+
+#mobile-nav li > a:active,
+#mobile-nav li > a:hover{
+  text-decoration: none;
+  color: #F4F4F4;
+}
+
+#mobile-nav-button,
+#mobile-nav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  #desktop-nav {
+    display: none;
+  }
+
+  #mobile-nav-button,
+  #mobile-nav {
+    display: block;
+  }
+}
+
+#footer{
+  width: 100%;
+  height: 50px;
+  background-color: #3D3F45;
+  position: fixed;
+  bottom: 0;
+}
+
+#footer span {
+  display: block;
+  text-align: center;
+  position: relative;
+  margin-top: 0.9rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: #FFF;
+  font-size: 1.1rem;
+}
+
+#content {
+  text-align: center;
+}
+
+#coordinates {
+  margin-left: auto;
+  margin-right: auto;
 }

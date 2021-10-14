@@ -1,83 +1,52 @@
-if ('serviceWorker' in navigator){
-  navigator.serviceWorker.register('service-worker.js')
-    .then((reg) => console.log('service worker registered', reg))
-    .catch((err) => console.log('service worker not registered', err));
+
+// Mobile Menu
+
+document.getElementById("mobile-nav-button").onclick = function() {
+  document.getElementById("mobile-nav").style.right = "0";
 }
 
-
-// const start = document.querySelector("#start");
-// const stop = document.querySelector("#stop");
-//
-// const coordinates = [];
-//
-// var displayCoordinates = "";
-//
-// start.addEventListener("click", () => {
-//   navigator.geolocation.watchPosition(
-//     data => {
-//       console.log(data);
-//       coordinates.push([data.coords.latitude, data.coords.longitude, data.timestamp]);
-//       displayCoordinates = data.coords.latitude + ", " + data.coords.longitude + ", " + data.timestamp + "<b>";
-//       document.getElementById('coordinates').textContent = displayCoordinates;
-//       // window.localStorage.setItem("coordinates", JSON.stringify(coordinates));
-//     },
-//     error => console.log(error), {
-//       enableHighAccuracy: true
-//     }
-//   );
-// });
-
-
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
-let map, infoWindow;
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 6,
-  });
-  infoWindow = new google.maps.InfoWindow();
-
-  const locationButton = document.createElement("button");
-
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  });
+document.getElementById("mobile-nav-close-button").onclick = function() {
+  document.getElementById("mobile-nav").style.right = "-320px";
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
+// Geolocation
+
+
+var route = [];
+var watchId;
+function start() {
+  if ('geolocation' in navigator) {
+    console.log('geolocation available');
+    watchId = navigator.geolocation.watchPosition(position => {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      var timest = position.timestamp;
+      const pos = {
+        latitude: lat,
+        longitude: lon,
+        timestamp: timest
+      };
+      route.push(pos);
+      document.getElementById('latitude').textContent = lat;
+      document.getElementById('longitude').textContent = lon;
+      console.log(position);
+    });
+  }
+  else {
+    console.log('geolocation not available');
+  }
+}
+
+function stop() {
+  navigator.geolocation.clearWatch(watchId);
+  console.log("success1");
+  var parsed = "";
+  for (i=0; i < route.length; i++) {
+    var object = route[i];
+    for (var property in object) {
+      parsed += property + ": " + object[property] + "; ";
+    };
+    parsed += "<br />";
+  }
+  document.getElementById('display').innerHTML = parsed;
 }
