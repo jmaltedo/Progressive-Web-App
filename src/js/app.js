@@ -20,11 +20,12 @@ function start() {
     watchId = navigator.geolocation.watchPosition(position => {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
-      var timest = position.timestamp.toLocaleString();
+      var timest = position.timestamp;
+      let dateObj = new Date(timest);
       const pos = {
         latitude: lat,
         longitude: lon,
-        timestamp: timest
+        timestamp: dateObj
       };
       route.push(pos);
       document.getElementById('latitude').textContent = lat;
