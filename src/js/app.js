@@ -20,7 +20,7 @@ function start() {
     watchId = navigator.geolocation.watchPosition(position => {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
-      var timest = position.timestamp.toISOString();
+      var timest = position.timestamp.toLocaleString();
       const pos = {
         latitude: lat,
         longitude: lon,
