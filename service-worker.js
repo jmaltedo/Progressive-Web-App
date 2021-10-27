@@ -1,13 +1,14 @@
 var CACHE_NAME = 'cache-v1';
 var urlsToCache = [
-  '/',
-  '/index.html',
-  '/map.html',
-  '/src/css/styles.css',
-  '/src/js/app.js'
+  // '/',
+  'index.html',
+  'map.html',
+  'src/css/styles.css',
+  'src/js/app.js'
 ];
 
 self.addEventListener('install', function(event) {
+  // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
