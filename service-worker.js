@@ -1,10 +1,10 @@
 var $CACHE_STORE = 'cache-v1';
 var $FILES = [
-  '/',
-  '/index.html',
-  '/map.html',
-  '/src/css/styles.css',
-  '/src/js/app.js'
+  // '/',
+  // '/index.html',
+  // '/map.html',
+  // '/src/css/styles.css',
+  // '/src/js/app.js'
 ];
 
 self.addEventListener('install', event => {
