@@ -1,4 +1,4 @@
-var $CACHE_STORE = 'cache-v1';
+var $CACHE_STORE;
 var $FILES = [
   '/',
   '/index.html',
